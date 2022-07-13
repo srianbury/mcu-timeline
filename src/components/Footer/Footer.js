@@ -1,4 +1,4 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 
 function Footer() {
   return (
@@ -10,7 +10,9 @@ function Footer() {
       }}
     >
       <Container fixed>
-        <h2>Footer Contents</h2>
+        <Typography variant="h4" component="span" sx={{ fontWeight: "bold" }}>
+          MCU Timeline
+        </Typography>
       </Container>
     </Box>
   );

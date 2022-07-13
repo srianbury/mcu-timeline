@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { Box, Container, IconButton } from "@mui/material";
+import { Box, Container, IconButton, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { NavDrawerContext } from "../NavDrawer";
 
 function Header() {
-  const { isOpen, openDrawer } = useContext(NavDrawerContext);
+  const { openDrawer } = useContext(NavDrawerContext);
   return (
     <Box
       sx={{
@@ -24,7 +24,9 @@ function Header() {
           sx={{ mr: 2 }}
         >
           <MenuIcon fontSize="large" sx={{ mr: 2 }} />
-          <h2>Site Name</h2>
+          <Typography variant="h4" component="span" sx={{ fontWeight: "bold" }}>
+            MCU Timeline
+          </Typography>
         </IconButton>
       </Container>
     </Box>

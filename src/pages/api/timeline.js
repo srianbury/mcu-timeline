@@ -1,4 +1,4 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { helloHandler } from "../../api/hello";
+import { timelineHandler } from "../../api";
 
-export default helloHandler;
+export default timelineHandler;
