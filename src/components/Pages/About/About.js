@@ -14,8 +14,8 @@ function About({ numMovies }) {
         <Box>
           If you want to see the Marvel and Avengers movies in order as they
           happened, starting with the World War II-set Captain America: The
-          First Avenger, we've listed all {numMovies} MCU movies and series in
-          chronological order, in one guide!
+          First Avenger, we&apos;ve listed all {numMovies} MCU movies and series
+          in chronological order, in one guide!
         </Box>
       </main>
     </div>
