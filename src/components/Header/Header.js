@@ -8,7 +8,8 @@ function Header() {
   return (
     <Box
       sx={{
-        backgroundColor: "#42a5f5",
+        backgroundColor: "#393E8F",
+        color: "white",
         py: 2,
         mb: 2,
       }}

@@ -1,3 +1,4 @@
-import { About } from "../components/Pages";
+import { About, getStaticProps } from "../components/Pages/About";
 
 export default About;
+export { getStaticProps };
