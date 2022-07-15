@@ -1,10 +1,11 @@
 import { Box, Container, Typography } from "@mui/material";
+import { marvelRed } from "../../../styles/colors";
 
 function Footer() {
   return (
     <Box
       sx={{
-        backgroundColor: "#393E8F",
+        backgroundColor: marvelRed,
         color: "white",
         py: 2,
         mt: 2,

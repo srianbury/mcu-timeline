@@ -11,6 +11,12 @@ function App({ Component, pageProps }) {
     <>
       <NextHead>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <title>MCU Timeline</title>
+        <meta
+          name="description"
+          content={`MARVEL MOVIES IN ORDER: HOW TO WATCH ALL MCU MOVIES AND SERIES CHRONOLOGICALLY`}
+        />
+        <link rel="icon" href="/favicon.ico" />
       </NextHead>
       <CssBaseline />
       <NavDrawerContextProvider>

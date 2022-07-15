@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import {
   Box,
   Typography,
@@ -19,24 +20,28 @@ import {
 } from "@mui/lab";
 
 const SORT_ORDERS = {
-  CHRON: "CHRON",
-  RELEASE: "RELEASE",
+  CHRON: "chron",
+  RELEASE: "release",
 };
 
 function Home({ movies }) {
-  const [sortOrder, setSortOrder] = useState(SORT_ORDERS.CHRON);
+  const router = useRouter();
+  const { sort } = router.query;
+  const [sortOrder, setSortOrder] = useState(setSortOrderHelper(sort));
 
   function handleSortOrderSelectionChange(event) {
-    setSortOrder(event.target.value);
+    router.push(`?sort=${event.target.value}`, undefined, {
+      shallow: true,
+    });
   }
 
   function getSortedMovies() {
     switch (sortOrder) {
-      case SORT_ORDERS.RELEASE:
+      case SORT_ORDERS.RELEASE.toLowerCase():
         return movies.sort(
           (a, b) => new Date(a.releaseDate) - new Date(b.releaseDate)
         );
-      case SORT_ORDERS.CHRON:
+      case SORT_ORDERS.CHRON.toLowerCase():
       default:
         return movies.sort((a, b) =>
           a.order > b.order ? 1 : a.order < b.order ? -1 : 0
@@ -44,7 +49,16 @@ function Home({ movies }) {
     }
   }
 
-  const sortedMovies = getSortedMovies();
+  // set the sort order to the value from the query param if it's in our list of options (SORT_ORDERS)
+  function setSortOrderHelper(value) {
+    return value && value.toUpperCase() in SORT_ORDERS
+      ? value.toLowerCase()
+      : SORT_ORDERS.CHRON;
+  }
+
+  useEffect(() => {
+    setSortOrder(setSortOrderHelper(sort));
+  }, [sort]);
 
   return (
     <div>
@@ -54,7 +68,6 @@ function Home({ movies }) {
           name="description"
           content={`MARVEL MOVIES IN ORDER: HOW TO WATCH ALL ${movies.length} MCU MOVIES AND SERIES CHRONOLOGICALLY`}
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
         <FormControl>
@@ -79,7 +92,7 @@ function Home({ movies }) {
           </RadioGroup>
         </FormControl>
         <Timeline position="alternate">
-          {sortedMovies.map((movie, index) => (
+          {getSortedMovies().map((movie, index) => (
             <TimelineItem key={movie.title}>
               <TimelineSeparator>
                 <TimelineDot />

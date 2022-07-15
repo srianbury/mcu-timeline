@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { Box, Container, IconButton, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { NavDrawerContext } from "../NavDrawer";
+import { marvelRed } from "../../../styles/colors";
 
 function Header() {
   const { openDrawer } = useContext(NavDrawerContext);
   return (
     <Box
       sx={{
-        backgroundColor: "#393E8F",
+        backgroundColor: marvelRed,
         color: "white",
         py: 2,
         mb: 2,
