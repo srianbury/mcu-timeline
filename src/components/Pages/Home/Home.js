@@ -93,7 +93,7 @@ function Home({ movies }) {
         </FormControl>
         <Timeline position="alternate">
           {getSortedMovies().map((movie, index) => (
-            <TimelineItem key={movie.title}>
+            <TimelineItem key={movie.title} id={movie.order}>
               <TimelineSeparator>
                 <TimelineDot />
                 {index === movies.length - 1 ? null : <TimelineConnector />}
